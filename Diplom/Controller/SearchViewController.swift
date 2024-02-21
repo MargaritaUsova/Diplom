@@ -7,17 +7,24 @@
 
 import UIKit
 import YandexMapsMobile
+import CoreLocation
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
+//    var locationManager: CLLocationManager{
+//        
+//        //return locationManager
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        getUserLocation()
         registerForKeyboardNotifications()
-
+        
         
         /*
         let searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
@@ -97,23 +104,56 @@ class SearchViewController: UIViewController {
                 let keyboardFrameValue =
                 info[UIResponder.keyboardFrameBeginUserInfoKey]
                 as? NSValue else { return }
-     
+            
             let keyboardFrame = keyboardFrameValue.cgRectValue
             let keyboardSize = keyboardFrame.size
-     
+            
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0,
             bottom: keyboardSize.height, right: 0.0)
             scrollView.contentInset = contentInsets
             scrollView.scrollIndicatorInsets = contentInsets
         }
-     
+    
         @objc func keyboardWillBeHidden(_ notification:
            NSNotification) {
             let contentInsets = UIEdgeInsets.zero
             scrollView.contentInset = contentInsets
             scrollView.scrollIndicatorInsets = contentInsets
         }
-   
+    
+    
+    private func getUserLocation(){
+        print("OK")
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+
+        // Request a user’s location once
+        locationManager.requestLocation()
+//        print("latitude: ", locationManager.location?.coordinate.latitude)
+        
+//        print("Location: ", locationManager.location?.coordinate.latitude)
+    }
+    func locationManager(
+        _ manager: CLLocationManager,
+        didUpdateLocations locations: [CLLocation]
+    ) {
+        if let location = locations.first {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+        
+            // Handle location update
+            print(latitude, longitude, "lat and long")
+        }
+        
+    }
+    
+    func locationManager(
+        _ manager: CLLocationManager,
+        didFailWithError error: Error
+    ) {
+        print("Got error: ", error)
+        
+    }
 
 }
 

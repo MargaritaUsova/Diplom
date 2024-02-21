@@ -28,13 +28,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="f8B-nv-rSz"/>
                                 </connections>
                             </searchBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CE3-X4-xBi">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CE3-X4-xBi">
                                 <rect key="frame" x="-1" y="101" width="393" height="667"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-eU-Zqb">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-eU-Zqb">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="756"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeV-X0-s0q">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IeV-X0-s0q">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OgW-4p-VwV">
@@ -114,7 +114,7 @@
                                                     <constraint firstAttribute="height" constant="126" id="CH6-WR-gb2"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-ei-cQ5">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-ei-cQ5">
                                                 <rect key="frame" x="0.0" y="126" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8zi-JG-qM5">
@@ -193,7 +193,7 @@
                                                     <constraint firstAttribute="width" constant="393" id="rdT-Tx-ePC"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gr-0r-BEj">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gr-0r-BEj">
                                                 <rect key="frame" x="0.0" y="252" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X1z-9v-HQR">
@@ -272,7 +272,7 @@
                                                     <constraint firstAttribute="height" constant="126" id="c1u-pZ-rNS"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ief-t9-CMf">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ief-t9-CMf">
                                                 <rect key="frame" x="0.0" y="378" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="afx-wS-aN1">
@@ -351,7 +351,7 @@
                                                     <constraint firstAttribute="width" constant="393" id="qff-XM-yTB"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqu-zS-lPa">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqu-zS-lPa">
                                                 <rect key="frame" x="0.0" y="504" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lGD-IQ-ll8">
@@ -430,7 +430,7 @@
                                                     <constraint firstAttribute="width" constant="393" id="Si4-df-h4M"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGj-sX-mPl">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGj-sX-mPl">
                                                 <rect key="frame" x="0.0" y="630" width="393" height="126"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-nb-EsJ">
