@@ -33,3 +33,8 @@ xcuserdata
 # CocoaPods
 Pods/
 
+# Игнорировать большие файлы в YandexMapsMobile.xcframework
+Pods/YandexMapsMobile/YandexMapsMobile.xcframework/
+
+Pods/YandexMapsMobile/YandexMapsMobile.xcframework/ios-x86_64_arm64-simulator/YandexMapsMobile.framework/YandexMapsMobile
+Pods/YandexMapsMobile/YandexMapsMobile.xcframework/ios-arm64/YandexMapsMobile.framework/YandexMapsMobile
