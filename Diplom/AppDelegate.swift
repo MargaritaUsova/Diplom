@@ -7,6 +7,7 @@
 
 import UIKit
 import YandexMapsMobile
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
