@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import YandexMapsMobile
+
+enum CuisineCategory: String{
+    case coffee = "Кофейня"
+    case vegan = "Веганская еда"
+    case meat = "Мясной ресторан"
+    case fish = ""
+//    case chin
+}
+
+class SearchModel{
+    
+}
