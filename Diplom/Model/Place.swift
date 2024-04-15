@@ -15,11 +15,11 @@ struct Place {
     let category: [String]
     var address: String?
     var id: String
+    var phoneNumbers: [String]?
+    var features: [String]?
+    var links: [String]?
+    var averageBill: String?
 }
 
 
-func fetchAdditionalData(placeId: String){
-    let myAPIKey = "***REMOVED***"
-    let urlStringForReviews = "https://search-maps.yandex.ru/v1/places/\(placeId)/?apikey=\(myAPIKey)&fields=reviews"
-    
-}
+

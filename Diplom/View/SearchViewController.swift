@@ -18,32 +18,37 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UISearc
     @IBOutlet var menuButton: [UIButton]!
     
     @IBOutlet var stackViewsCollection: [UIStackView]!
-    
+
     @IBOutlet var menuCollection: [UIView]!
     
     @IBOutlet weak var stackView: UIStackView!
     
     let locationManager = CLLocationManager()
     
-    var userLatitude, userLongtitude: Double?
+    static var userLatitude, userLongtitude: Double?
+    static var buttonText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
-
+        
         makeConstraintsForSearchViewController()
         getUserLocation()
         registerForKeyboardNotifications()
+        searchBar.delegate = self
+
     }
     
     func makeConstraintsForSearchViewController(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isUserInteractionEnabled = true
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant:  60)
         ])
         
         NSLayoutConstraint.activate([
@@ -58,7 +63,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UISearc
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
         
         for button in menuButton {
@@ -114,50 +120,41 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UISearc
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        print("User location: ", locations.first?.coordinate ?? "No location")
         if let location = locations.first {
-            userLatitude = location.coordinate.latitude
-            userLongtitude = location.coordinate.longitude
-            print(userLatitude!, userLongtitude!, "lat and long")
+            SearchViewController.userLatitude = location.coordinate.latitude
+            SearchViewController.userLongtitude = location.coordinate.longitude
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         print("Got error: ", error)
+        if (SearchViewController.userLatitude == nil || SearchViewController.userLongtitude == nil)
+        {
+            SearchViewController.userLatitude = 55.7558
+            SearchViewController.userLongtitude = 37.6173
+        }
     }
     
     
     @IBAction func menuButtonAction(_ sender: UIButton) {
-        let categoryName = sender.titleLabel!.text!
-        performSegue(withIdentifier: "SearchResultsViewController", sender: categoryName)
+        SearchViewController.buttonText = sender.titleLabel!.text!
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchResultsViewController = storyboard.instantiateViewController(identifier: "SearchResultsViewController")
+        self.present(searchResultsViewController, animated: true)
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchResultsViewController"{
-            if let destinationVC = segue.destination as? SearchResultsViewController {
-                if let buttonText = sender as? String {
-                    destinationVC.buttonText = buttonText
-                    
-                    if (userLatitude == nil || userLongtitude == nil)
-                    {
-                        userLatitude = 55.7558
-                        userLongtitude = 37.6173
-                    }
-                    destinationVC.latitude = userLatitude
-                    destinationVC.longitude = userLongtitude
-                }
-            }
-        }
-    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
         searchBar.resignFirstResponder()
         searchBar.text = ""
         }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text{
             print("Введенный запрос: ", searchText)
-    }
+        }
     }
 }
