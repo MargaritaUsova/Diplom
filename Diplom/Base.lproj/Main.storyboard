@@ -3,507 +3,96 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Поиск-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="SearchViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CE3-X4-xBi">
-                                <rect key="frame" x="0.0" y="99" width="393" height="743"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-eU-Zqb">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="799"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-OJ-lpF">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="133.33333333333334"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hdd-XZ-oIh">
-                                                        <rect key="frame" x="0.0" y="-1" width="294" height="101.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6r-yU-t2W">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Pizza" imagePlacement="top" title="Пицца" imagePadding="10">
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLy-6M-xFj"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-4d-Mcg">
-                                                                <rect key="frame" x="103" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Sushi" imagePlacement="top" title="Суши" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xr0-by-ZyX"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXu-8c-k7p">
-                                                                <rect key="frame" x="206" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Pasta" imagePlacement="top" title="Паста" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Yc-GL-uBO"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-ei-cQ5">
-                                                <rect key="frame" x="0.0" y="133.33333333333334" width="393" height="133.00000000000003"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8zi-JG-qM5">
-                                                        <rect key="frame" x="0.0" y="-1" width="294" height="106.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-fb-1zj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88" height="106.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Fastfood" imagePlacement="top" title="Фастфуд" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hu-h7-vYu"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9L-7y-Qjm">
-                                                                <rect key="frame" x="103" y="0.0" width="88" height="106.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Coffee" imagePlacement="top" title="Кофе" imagePadding="15" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ly-M5-fjF"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-DQ-2s8">
-                                                                <rect key="frame" x="206" y="0.0" width="88" height="106.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Bakery" imagePlacement="top" title="Выпечка" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="25D-Le-kEj"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gr-0r-BEj">
-                                                <rect key="frame" x="0.0" y="266.33333333333331" width="393" height="133.33333333333331"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X1z-9v-HQR">
-                                                        <rect key="frame" x="0.0" y="-1" width="294" height="101.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZ2-aM-VY0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Cake" imagePlacement="top" title="Десерты" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bZf-20-DQi"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fs-TZ-xgL">
-                                                                <rect key="frame" x="103" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Breakfast" imagePlacement="top" title="Завтрак" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TkD-IR-7k3"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGL-hf-UoF">
-                                                                <rect key="frame" x="206" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Vegan" imagePlacement="top" title="Веганское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZTZ-Bh-Q0X"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ief-t9-CMf">
-                                                <rect key="frame" x="0.0" y="399.66666666666669" width="393" height="133.00000000000006"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="afx-wS-aN1">
-                                                        <rect key="frame" x="0.0" y="-1" width="349" height="101.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkk-Iw-fac">
-                                                                <rect key="frame" x="0.0" y="0.0" width="106.33333333333333" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Steak" imagePlacement="top" title="Мясо" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gQt-nt-5Uv"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIl-1Q-avw">
-                                                                <rect key="frame" x="121.33333333333334" y="0.0" width="106.33333333333334" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Shrimp" imagePlacement="top" title="Морепродукты" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qkW-kT-z9k"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NET-Q7-gik">
-                                                                <rect key="frame" x="242.66666666666666" y="0.0" width="106.33333333333334" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Asia" imagePlacement="top" title="Азиатское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1M6-0U-l9E"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqu-zS-lPa">
-                                                <rect key="frame" x="0.0" y="532.66666666666663" width="393" height="133.33333333333337"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lGD-IQ-ll8">
-                                                        <rect key="frame" x="0.0" y="-1" width="340" height="101.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ku-OW-Bxp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Taco" imagePlacement="top" title="Мексиканское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EaB-1o-G1n"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGp-QY-zjj">
-                                                                <rect key="frame" x="118.33333333333334" y="0.0" width="103.33333333333334" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Kavkaz" imagePlacement="top" title="Кавказское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hVv-Q6-Sn9"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flX-R6-2Tu">
-                                                                <rect key="frame" x="236.66666666666666" y="0.0" width="103.33333333333334" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Shawarma" imagePlacement="top" title="Шаурма" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUH-Xk-lfk"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGj-sX-mPl">
-                                                <rect key="frame" x="0.0" y="666" width="393" height="133"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-nb-EsJ">
-                                                        <rect key="frame" x="0.0" y="-1" width="294" height="101.33333333333333"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao8-yI-g1g">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Poke" imagePlacement="top" title="Поке" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ybe-42-gcu"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-Ia-Koi">
-                                                                <rect key="frame" x="103" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="CurryRice" imagePlacement="top" title="Индийское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OlZ-qW-7MS"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jk2-XJ-IyZ">
-                                                                <rect key="frame" x="206" y="0.0" width="88" height="101.33333333333333"/>
-                                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="Chinese" imagePlacement="top" title="Китайское" imagePadding="10" cornerStyle="medium">
-                                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </buttonConfiguration>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hN-iT-Hp2"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <viewLayoutGuide key="contentLayoutGuide" id="GxL-wJ-xp1"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="ALQ-BB-p6L"/>
-                            </scrollView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrH-Z7-E5P">
-                                <rect key="frame" x="0.0" y="43" width="393" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iUz-Z5-RJL">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="56p-4o-doi"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="scrollView" destination="CE3-X4-xBi" id="SP5-zS-AIZ"/>
-                        <outlet property="searchBar" destination="nrH-Z7-E5P" id="WrM-wK-5DO"/>
-                        <outlet property="stackView" destination="fWL-eU-Zqb" id="rpN-3I-M8g"/>
-                        <outletCollection property="menuButton" destination="6dT-fb-1zj" collectionClass="NSMutableArray" id="gIj-Ex-u2R"/>
-                        <outletCollection property="menuButton" destination="a9L-7y-Qjm" collectionClass="NSMutableArray" id="DiK-0G-2IP"/>
-                        <outletCollection property="menuButton" destination="lhC-DQ-2s8" collectionClass="NSMutableArray" id="ddz-yC-c6J"/>
-                        <outletCollection property="menuButton" destination="UZ2-aM-VY0" collectionClass="NSMutableArray" id="ymW-vH-VPh"/>
-                        <outletCollection property="menuButton" destination="8Fs-TZ-xgL" collectionClass="NSMutableArray" id="roh-SS-ePz"/>
-                        <outletCollection property="menuButton" destination="SGL-hf-UoF" collectionClass="NSMutableArray" id="nBR-eQ-s1k"/>
-                        <outletCollection property="menuButton" destination="nkk-Iw-fac" collectionClass="NSMutableArray" id="zLh-mL-cVz"/>
-                        <outletCollection property="menuButton" destination="EIl-1Q-avw" collectionClass="NSMutableArray" id="sHD-sl-BfH"/>
-                        <outletCollection property="menuButton" destination="NET-Q7-gik" collectionClass="NSMutableArray" id="dqg-yd-yUg"/>
-                        <outletCollection property="menuButton" destination="4Ku-OW-Bxp" collectionClass="NSMutableArray" id="Gr1-q2-Iaw"/>
-                        <outletCollection property="menuButton" destination="kGp-QY-zjj" collectionClass="NSMutableArray" id="IMb-hc-5a3"/>
-                        <outletCollection property="menuButton" destination="flX-R6-2Tu" collectionClass="NSMutableArray" id="3gv-5I-USO"/>
-                        <outletCollection property="menuButton" destination="ao8-yI-g1g" collectionClass="NSMutableArray" id="mTj-Vm-UKd"/>
-                        <outletCollection property="menuButton" destination="ABy-Ia-Koi" collectionClass="NSMutableArray" id="Pyw-Pm-nEs"/>
-                        <outletCollection property="menuButton" destination="jk2-XJ-IyZ" collectionClass="NSMutableArray" id="IQO-n4-ImR"/>
-                        <outletCollection property="menuButton" destination="h6r-yU-t2W" collectionClass="NSMutableArray" id="Sfh-n7-Dck"/>
-                        <outletCollection property="menuButton" destination="rUU-4d-Mcg" collectionClass="NSMutableArray" id="emo-9s-pEe"/>
-                        <outletCollection property="menuButton" destination="nXu-8c-k7p" collectionClass="NSMutableArray" id="WDJ-TF-XjT"/>
-                        <outletCollection property="stackViewsCollection" destination="hdd-XZ-oIh" collectionClass="NSMutableArray" id="FcJ-yt-Puo"/>
-                        <outletCollection property="stackViewsCollection" destination="8zi-JG-qM5" collectionClass="NSMutableArray" id="Mae-nb-kQR"/>
-                        <outletCollection property="stackViewsCollection" destination="X1z-9v-HQR" collectionClass="NSMutableArray" id="hIb-z3-136"/>
-                        <outletCollection property="stackViewsCollection" destination="afx-wS-aN1" collectionClass="NSMutableArray" id="UIa-GR-3Gf"/>
-                        <outletCollection property="stackViewsCollection" destination="lGD-IQ-ll8" collectionClass="NSMutableArray" id="1HR-tX-wQ2"/>
-                        <outletCollection property="stackViewsCollection" destination="OWH-nb-EsJ" collectionClass="NSMutableArray" id="E8P-LV-MoJ"/>
-                        <outletCollection property="menuCollection" destination="Ns4-OJ-lpF" collectionClass="NSMutableArray" id="hP7-bf-jjh"/>
-                        <outletCollection property="menuCollection" destination="YsH-ei-cQ5" collectionClass="NSMutableArray" id="WPJ-kS-SQg"/>
-                        <outletCollection property="menuCollection" destination="6gr-0r-BEj" collectionClass="NSMutableArray" id="oy9-Qk-WWt"/>
-                        <outletCollection property="menuCollection" destination="ief-t9-CMf" collectionClass="NSMutableArray" id="eOh-mQ-W10"/>
-                        <outletCollection property="menuCollection" destination="Kqu-zS-lPa" collectionClass="NSMutableArray" id="eqm-m1-mwM"/>
-                        <outletCollection property="menuCollection" destination="jGj-sX-mPl" collectionClass="NSMutableArray" id="hBf-4V-jnr"/>
-                        <segue destination="w5q-D0-Zxe" kind="show" identifier="SearchResultsViewController" id="SnN-2S-e6Z"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Поиск" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="6Ii-IO-i0B"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38.931297709923662" y="238.73239436619718"/>
+            <point key="canvasLocation" x="-860" y="282"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="NyM-IP-zyu">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="w5q-D0-Zxe" customClass="SearchResultsViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultsViewController" modalPresentationStyle="overFullScreen" id="w5q-D0-Zxe" customClass="SearchResultsViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" semanticContentAttribute="playback" id="L43-Cq-uFX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-HH-Hmg">
+                                <rect key="frame" x="17" y="63" width="74" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Назад"/>
+                                <connections>
+                                    <action selector="backToSearchVCAction:" destination="w5q-D0-Zxe" eventType="touchUpInside" id="RdT-v3-WIr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="joJ-PS-SgL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZTC-HH-Hmg" firstAttribute="top" secondItem="joJ-PS-SgL" secondAttribute="top" constant="4" id="8kz-G4-pdV"/>
+                            <constraint firstItem="ZTC-HH-Hmg" firstAttribute="leading" secondItem="joJ-PS-SgL" secondAttribute="leading" constant="17" id="d4A-zP-pa3"/>
+                            <constraint firstItem="joJ-PS-SgL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZTC-HH-Hmg" secondAttribute="trailing" symbolic="YES" id="nbl-70-ZLd"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cqc-mr-Oi1"/>
+                    <navigationItem key="navigationItem" id="lys-4B-XHI"/>
+                    <connections>
+                        <outlet property="backToSearchViewControllrtButton" destination="ZTC-HH-Hmg" id="ROo-tj-ogQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVp-xG-sFx" userLabel="SearchResultsViewController" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="1030"/>
+            <point key="canvasLocation" x="-2169" y="282"/>
         </scene>
-        <!--Search Results Floating View Controller-->
-        <scene sceneID="Cb8-cv-Jg4">
+        <!--Place Info View Controller-->
+        <scene sceneID="EYo-xJ-Ug9">
             <objects>
-                <viewController storyboardIdentifier="SearchResultsFloatingViewController" id="vCN-Ic-gBQ" customClass="SearchResultsFloatingViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RPL-eM-8gp">
+                <viewController storyboardIdentifier="PlaceInfoVC" id="Uw0-5N-P2y" customClass="PlaceInfoViewController" customModule="Diplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uka-Jv-aFL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Mc-XR-SFM">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="placeName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8l-Hj-PnN">
+                                <rect key="frame" x="16" y="59" width="361" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mLe-cx-aUq">
-                                        <rect key="frame" x="0.0" y="8" width="393" height="844"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </stackView>
-                                </subviews>
-                                <viewLayoutGuide key="contentLayoutGuide" id="8cE-LX-lff"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="OCh-xg-Yfd"/>
-                            </scrollView>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="placePhoneNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-Jy-tJ6">
+                                <rect key="frame" x="16" y="90" width="361" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="r6o-sV-mRD"/>
+                        <viewLayoutGuide key="safeArea" id="7IO-km-IgF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Prs-ca-gyU"/>
+                    <connections>
+                        <outlet property="placeName" destination="N8l-Hj-PnN" id="0ds-Ok-aQz"/>
+                        <outlet property="placePhoneNumber" destination="pLU-Jy-tJ6" id="y6D-x5-GHw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gqm-1T-JX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PZ6-Ui-DSM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="1027.4647887323945"/>
+            <point key="canvasLocation" x="-937" y="1029"/>
         </scene>
         <!--Избранное-->
         <scene sceneID="fSx-hV-vkF">
@@ -519,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyf-Ed-iFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1107.6335877862596" y="242.95774647887325"/>
+            <point key="canvasLocation" x="389" y="283"/>
         </scene>
         <!--Аккаунт-->
         <scene sceneID="JPV-Xx-HBp">
@@ -535,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WqU-aR-PGi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139.6946564885498" y="242.95774647887325"/>
+            <point key="canvasLocation" x="1811" y="282"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PEV-i0-5TH">
@@ -549,56 +138,17 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SfS-UO-Dy3" kind="relationship" relationship="viewControllers" id="6MF-rp-pvQ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tcb-cL-2EB"/>
                         <segue destination="wgk-Qt-mbl" kind="relationship" relationship="viewControllers" id="olN-dU-WPQ"/>
                         <segue destination="BFB-6o-4p0" kind="relationship" relationship="viewControllers" id="kU1-9p-WiM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kdp-cZ-DUC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182" y="-497"/>
-        </scene>
-        <!--Поиск-->
-        <scene sceneID="7Rb-oh-BkA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SfS-UO-Dy3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Поиск" image="magnifyingglass" catalog="system" id="oFG-qx-T5D">
-                        <imageReference key="selectedImage" image="magnifyingglass" catalog="system" variableValue="1"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gLq-pd-3Bi">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Cki-wF-hXv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VI4-OJ-Bu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-887.78625954198469" y="238.73239436619718"/>
+            <point key="canvasLocation" x="389" y="-501"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Asia" width="64" height="64"/>
-        <image name="Bakery" width="64" height="64"/>
-        <image name="Breakfast" width="64" height="64"/>
-        <image name="Cake" width="64" height="64"/>
-        <image name="Chinese" width="64" height="64"/>
-        <image name="Coffee" width="64" height="64"/>
-        <image name="CurryRice" width="64" height="64"/>
-        <image name="Fastfood" width="64" height="64"/>
-        <image name="Kavkaz" width="64" height="64"/>
-        <image name="Pasta" width="64" height="64"/>
-        <image name="Pizza" width="64" height="64"/>
-        <image name="Poke" width="64" height="64"/>
-        <image name="Shawarma" width="64" height="64"/>
-        <image name="Shrimp" width="64" height="64"/>
-        <image name="Steak" width="64" height="64"/>
-        <image name="Sushi" width="64" height="64"/>
-        <image name="Taco" width="64" height="64"/>
-        <image name="Vegan" width="64" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
@@ -607,7 +157,7 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray6Color">
+        <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">

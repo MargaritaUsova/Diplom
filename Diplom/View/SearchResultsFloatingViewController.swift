@@ -6,6 +6,7 @@
 //
 import UIKit
 
+
 class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     static let shared = SearchResultsFloatingViewController()
     var selectedIndex: IndexPath = [0,0]
@@ -64,7 +65,6 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         SearchManager.shared.search {[weak self] places in
             DispatchQueue.main.async {
                 guard let self else {return}
-//                SearchResultsFloatingViewController.shared.placesData = places
                 self.placesData = places
                 self.tableView.reloadData()
             }

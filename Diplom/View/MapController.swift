@@ -13,13 +13,16 @@ class MapController{
     var map: YMKMap!
     static var mapView: YMKMapView!
     
+    
     func mapConfigure(view: UIView){
         MapController.mapView = YMKMapView(frame: view.frame)
         map = MapController.mapView.mapWindow.map
-
+        LocationManager.shared.requestLocationAuthorization()
+        LocationManager.shared.startUpdatingLocation()
+        
         MapController.mapView.mapWindow.map.move(
             with: YMKCameraPosition(
-                target: YMKPoint(latitude: SearchViewController.userLatitude!, longitude: SearchViewController.userLongtitude!),
+                target: YMKPoint(latitude: LocationManager.shared.userLatitude, longitude: LocationManager.shared.userLongtitude),
                 zoom: 15,
                 azimuth: 0,
                 tilt: 0

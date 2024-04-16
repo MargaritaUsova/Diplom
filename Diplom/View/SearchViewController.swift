@@ -6,44 +6,57 @@
 //
 
 import UIKit
-import YandexMapsMobile
-import CoreLocation
 
-class SearchViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet var menuButton: [UIButton]!
-    
-    @IBOutlet var stackViewsCollection: [UIStackView]!
+class SearchViewController: UIViewController {
 
-    @IBOutlet var menuCollection: [UIView]!
+    private var buttonsImages: [UIImage] = []
+    private var menuButtons: [UIButton] = []
     
-    @IBOutlet weak var stackView: UIStackView!
+    private let buttonsImagesNames = ["Asia", "Bakery", "Breakfast", "Cake", "Chinese", "Coffee", "CurryRice", "Fastfood", "Kavkaz", "Pasta", "Pizza", "Poke", "Shawarma", "Shrimp", "Steak", "Sushi", "Taco", "Vegan"]
     
-    let locationManager = CLLocationManager()
+    private let buttonsNames = ["Азиатское", "Выпечка", "Завтрак", "Десерты", "Китайское", "Кофе", "Индийское", "Фастфуд", "Кавказское", "Паста", "Пицца", "Поке", "Шаурма", "Морепродукты", "Мясо", "Суши", "Мексиканское", "Веганское"]
     
-    static var userLatitude, userLongtitude: Double?
+    private var collectionView: UICollectionView = {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
+        collectionView.alwaysBounceVertical = true
+        collectionView.showsVerticalScrollIndicator = false
+        
+        return collectionView
+    }()
+    
+    let searchBar = UISearchBar()
     static var buttonText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-        makeConstraintsForSearchViewController()
-        getUserLocation()
-        registerForKeyboardNotifications()
-        searchBar.delegate = self
+        setupUI()
 
     }
     
-    func makeConstraintsForSearchViewController(){
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isUserInteractionEnabled = true
+    private func setupUI(){
+        view.backgroundColor = .systemGray6
+        
+        view.addSubview(searchBar)
+        view.addSubview(collectionView)
+        
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+       
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -51,110 +64,62 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UISearc
             searchBar.heightAnchor.constraint(equalToConstant:  60)
         ])
         
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+    }
+
+}
+
+
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        buttonsImagesNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
-        ])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as? MenuCollectionViewCell else {
+            fatalError("Failed to deque MenuCollectionViewCell in SearchViewController")
+        }
         
-        for button in menuButton {
-            button.widthAnchor.constraint(equalToConstant: 111).isActive = true
-            button.heightAnchor.constraint(equalToConstant: 111).isActive = true
-        }
-        // Устанавливаем констрейнты для stack view
-        for (stackView, menuView) in zip(stackViewsCollection, menuCollection) {
-            stackView.isLayoutMarginsRelativeArrangement = true
-            stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                stackView.topAnchor.constraint(equalTo: menuView.topAnchor, constant: 0),
-                stackView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: 0),
-                stackView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor, constant: 0),
-                stackView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 0)
-            ])
-        }
-    }
-    
-    
-    // обработка появления последних строк меню при открытой клавиатуре
-    func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWasShown(_ notificiation: NSNotification) {
-        guard let info = notificiation.userInfo,
-              let keyboardFrameValue = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        let buttonImageName = buttonsImagesNames[indexPath.row]
+        let buttonName = buttonsNames[indexPath.row]
         
-        let keyboardFrame = keyboardFrameValue.cgRectValue
-        let keyboardSize = keyboardFrame.size
-        
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
+        cell.configure(with: buttonImageName, name: buttonName)
+        cell.menuButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+          return cell
+      }
+
+     
+      @objc func buttonAction(_ sender: UIButton) {
+          if let buttonText = sender.titleLabel?.text {
+              let storyboard = UIStoryboard(name: "Main", bundle: nil)
+              if let searchResultsViewController = storyboard.instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController {
+                  SearchViewController.buttonText = buttonText
+                  self.present(searchResultsViewController, animated: true, completion: nil)
+              }
+          }
+      }
     
-    @objc func keyboardWillBeHidden(_ notification: NSNotification) {
-        let contentInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    
-    private func getUserLocation(){
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        if let location = locations.first {
-            SearchViewController.userLatitude = location.coordinate.latitude
-            SearchViewController.userLongtitude = location.coordinate.longitude
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-        print("Got error: ", error)
-        if (SearchViewController.userLatitude == nil || SearchViewController.userLongtitude == nil)
-        {
-            SearchViewController.userLatitude = 55.7558
-            SearchViewController.userLongtitude = 37.6173
-        }
+}
+
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = 15 * 4
+        let availableWidth = collectionView.bounds.width - CGFloat(paddingSpace)
+        let widthPerItem = availableWidth / 3
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
     
-    @IBAction func menuButtonAction(_ sender: UIButton) {
-        SearchViewController.buttonText = sender.titleLabel!.text!
-       
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchResultsViewController = storyboard.instantiateViewController(identifier: "SearchResultsViewController")
-        self.present(searchResultsViewController, animated: true)
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        15
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        15
+    }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
-        searchBar.resignFirstResponder()
-        searchBar.text = ""
-        }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text{
-            print("Введенный запрос: ", searchText)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
     }
 }

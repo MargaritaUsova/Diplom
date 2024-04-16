@@ -29,7 +29,7 @@ class SearchManager{
     func search(completion: @escaping (([Place]) -> Void)){
         searchSession = searchManager.submit(
                    withText: SearchViewController.buttonText,
-                   geometry: YMKGeometry(point: YMKPoint(latitude: SearchViewController.userLatitude!, longitude: SearchViewController.userLongtitude!)),
+                   geometry: YMKGeometry(point: YMKPoint(latitude: LocationManager.shared.userLatitude, longitude: LocationManager.shared.userLongtitude)),
                    searchOptions: searchOptions,
                    responseHandler: { [weak self] response, error in
                        self!.handleSearchSessionResponse(response: response, error: error, completion: completion)

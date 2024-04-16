@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct UserLocation {
+    var latitude: Double?
+    var longitude: Double?
+}

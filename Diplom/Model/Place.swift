@@ -19,6 +19,7 @@ struct Place {
     var features: [String]?
     var links: [String]?
     var averageBill: String?
+    var workingHours: String?
 }
 
 

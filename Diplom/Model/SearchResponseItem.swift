@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import YandexMapsMobile
+
+struct SearchResponseItem {
+    let point: YMKPoint
+    let geoObject: YMKGeoObject?
+}
