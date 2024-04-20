@@ -84,7 +84,7 @@ class SearchManager{
             let metadata = item.geoObject?.metadataContainer.getItemOf(YMKSearchBusinessObjectMetadata.self) as! YMKSearchBusinessObjectMetadata
             
             let metadata2 = item.geoObject?.metadataContainer.getItemOf(YMKSearchPlaceInfo.self) as? YMKSearchPlaceInfo
-            print(metadata2)
+            
             
             let categoryNames = metadata.categories.map { $0.name }
 

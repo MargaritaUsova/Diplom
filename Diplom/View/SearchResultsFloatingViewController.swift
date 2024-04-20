@@ -30,9 +30,10 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         cell.averageBill.text = placesData[indexPath.row].averageBill
         cell.categoriesList.text = placesData[indexPath.row].category.joined(separator: ",")
         cell.placeName.text = placesData[indexPath.row].name
+        cell.selectedPlace = placesData[indexPath.row]
+        cell.selectedPlaceId = placesData[indexPath.row].id
+        cell.configureCellButton(placeId: placesData[indexPath.row].id)
         return cell
-    
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
@@ -40,14 +41,13 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath
+//        selectedIndex = indexPath
 
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let placeInfoVC = mainStoryboard.instantiateViewController(identifier: "PlaceInfoVC") as! PlaceInfoViewController
         placeInfoVC.modalPresentationStyle = UIModalPresentationStyle.pageSheet
         placeInfoVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         placeInfoVC.placesInfo = placesData
-        placeInfoVC.selectedIndex = indexPath
         self.present(placeInfoVC, animated: true)
     }
     

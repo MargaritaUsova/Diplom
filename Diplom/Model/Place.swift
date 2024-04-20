@@ -20,6 +20,7 @@ struct Place {
     var links: [String]?
     var averageBill: String?
     var workingHours: String?
+    var uri: String?
 }
 
 

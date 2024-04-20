@@ -14,6 +14,8 @@
 		6F4ADD0C2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4ADD0B2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift */; };
 		6F69030A2B9DECBB00ED20B7 /* ClusterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6903092B9DECBB00ED20B7 /* ClusterListener.swift */; };
 		6F69030C2B9E47EF00ED20B7 /* ClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69030B2B9E47EF00ED20B7 /* ClusterView.swift */; };
+		6FD9AAC42BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9AAC22BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld */; };
+		6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */; };
 		6FDA922B2BCD804B00F3CF32 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA922A2BCD804B00F3CF32 /* MenuCollectionViewCell.swift */; };
 		6FDD517C2BC2EB88004CD81C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD517B2BC2EB88004CD81C /* PlaceInfoViewController.swift */; };
 		6FDE97122B69A8D70036E3BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE97112B69A8D70036E3BB /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 		6F4ADD0B2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsFloatingViewController.swift; sourceTree = "<group>"; };
 		6F6903092B9DECBB00ED20B7 /* ClusterListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterListener.swift; sourceTree = "<group>"; };
 		6F69030B2B9E47EF00ED20B7 /* ClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterView.swift; sourceTree = "<group>"; };
+		6FD9AAC32BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavouritePlacesDB.xcdatamodel; sourceTree = "<group>"; };
+		6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesDB.swift; sourceTree = "<group>"; };
 		6FDA922A2BCD804B00F3CF32 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FDD517B2BC2EB88004CD81C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
 		6FDE970E2B69A8D70036E3BB /* Diplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +116,8 @@
 			children = (
 				6FF8BC1C2BB8D6B9008007A6 /* SearchManager.swift */,
 				6FE14C012B93D406008E843D /* Place.swift */,
+				6FD9AAC22BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld */,
+				6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */,
 				6FF8BC1E2BB8DA76008007A6 /* SearchResponseItem.swift */,
 				6F2AFA832BC7E3C300D8F044 /* UserLocation.swift */,
 				6FE14FEE2BCC2DD00090CAEE /* LocationManager.swift */,
@@ -307,6 +313,8 @@
 				6FDD517C2BC2EB88004CD81C /* PlaceInfoViewController.swift in Sources */,
 				6FDE97142B69A8D70036E3BB /* SceneDelegate.swift in Sources */,
 				6FE14FEF2BCC2DD00090CAEE /* LocationManager.swift in Sources */,
+				6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDB.swift in Sources */,
+				6FD9AAC42BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld in Sources */,
 				6FDF87602BC162BD00E1D8C5 /* PlaceInfoCell.swift in Sources */,
 				6FDA922B2BCD804B00F3CF32 /* MenuCollectionViewCell.swift in Sources */,
 			);
@@ -540,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6FD9AAC22BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6FD9AAC32BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodel */,
+			);
+			currentVersion = 6FD9AAC32BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodel */;
+			path = FavouritePlacesDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6FDE97062B69A8D70036E3BB /* Project object */;
 }
