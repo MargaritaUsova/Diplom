@@ -12,7 +12,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
     static let shared = LocationManager()
     
     public let locationManager = CLLocationManager()
-    public var userLatitude: Double =  55.7558
+    public var userLatitude: Double = 55.7558
     public var userLongtitude: Double = 37.6173
     
     override private init() {

@@ -11,13 +11,11 @@ import YandexMapsMobile
 class SearchManager{
     
     static let shared = SearchManager()
-    
     var searchSession: YMKSearchSession?
     var searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
     var searchOptions = {
         let options = YMKSearchOptions()
         options.searchTypes = .biz
-        options.resultPageSize = 32
         return options
     }()
     
@@ -25,8 +23,9 @@ class SearchManager{
     
     var averageBill = ""
     var placesResult: [Place] = []
+    private var cost: String?
     
-    func search(completion: @escaping (([Place]) -> Void)){
+    func searchByCuisineType(completion: @escaping (([Place]) -> Void)){
         searchSession = searchManager.submit(
                    withText: SearchViewController.buttonText,
                    geometry: YMKGeometry(point: YMKPoint(latitude: LocationManager.shared.userLatitude, longitude: LocationManager.shared.userLongtitude)),
@@ -36,11 +35,16 @@ class SearchManager{
                    }
            )
     }
+    
+    func searchByUserQuery(){
+        
+    }
+    
         
     private func handleSearchSessionResponse(response: YMKSearchResponse?, error: Error?, completion: ([Place]) -> Void) {
         if let error = error {
             completion([])
-            print("ERROR: ", error)
+            print("Ошибка запроса при поиске: ", error)
             return
             }
 
@@ -48,16 +52,8 @@ class SearchManager{
               let boundingBox = response.metadata.boundingBox else {
             return
         }
-        
-        let tryResponse = response.collection.children
-        let im: [UIImage] = []
-        for item in tryResponse {
-//            let metadata2 = item.getItemOf(YMKSearchPlaceInfo.self) as? YMKSearchPlaceInfo
-//            im.append(item.image?.images)
-//            print(item.image?.images)
-        }
-        
 
+       
         let items = response.collection.children.compactMap {
             if let point = $0.obj?.geometry.first?.point {
                 return SearchResponseItem(point: point, geoObject: $0.obj)
@@ -74,7 +70,6 @@ class SearchManager{
         let point: YMKPoint
         let geoObject: YMKGeoObject?
     }
-
             
     
     func makePlaceInfo(_ items: [SearchResponseItem]) -> [Place]{
@@ -83,16 +78,15 @@ class SearchManager{
         for item in items {
             let metadata = item.geoObject?.metadataContainer.getItemOf(YMKSearchBusinessObjectMetadata.self) as! YMKSearchBusinessObjectMetadata
             
-            let metadata2 = item.geoObject?.metadataContainer.getItemOf(YMKSearchPlaceInfo.self) as? YMKSearchPlaceInfo
-            
-            
             let categoryNames = metadata.categories.map { $0.name }
 
             if let matchingCategory = categoryNames.first(where: {placeCategories.contains($0)}){
                 for (names, values) in zip(metadata.features, metadata.features.map {$0.value.textValue}) {
                     if let name = names.name, name.contains("средний счёт"), let value = values {
-                        let cost = value.joined()
-                        averageBill = "Средний счёт \(cost)"
+                        cost = value.joined()
+                        if let cost = cost{
+                            averageBill = "Средний счёт \(cost)"
+                        }
                     }
                 }
                 let place = Place(point: item.point, 

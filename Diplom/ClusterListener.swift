@@ -9,32 +9,33 @@ import Foundation
 import YandexMapsMobile
 
 final class ClusterListener: NSObject, YMKClusterListener, YMKClusterTapListener {
-    func onClusterTap(with cluster: YMKCluster) -> Bool {
-       print( "Tapped the cluster")
-        return true
-    }
     
-// MARK: - Constructor
-
     init(controller: UIViewController) {
         self.controller = controller
     }
+    
+    func onClusterTap(with cluster: YMKCluster) -> Bool {
+        if let placemarkUserData = cluster.placemarks.first?.userData as? PlacemarkUserData {
+                print("Tapped on \(placemarkUserData.name)")
+                return true
+            }
+            return false
+    }
 
-    // MARK: - Public methods
+    func onClusterAdded(with cluster: YMKCluster) {
+        let placemarks = cluster.placemarks.compactMap { $0.userData as? PlacemarkUserData }
+        cluster.appearance.setViewWithView(YRTViewProvider(uiView: ClusterView(placemarks: placemarks)))
+        cluster.addClusterTapListener(with: self)
+        print("Cluster added")
+    }
 
 
-func onClusterAdded(with cluster: YMKCluster) {
-    let placemarks = cluster.placemarks.compactMap { $0.userData as? PlacemarkUserData }
-    cluster.appearance.setViewWithView(YRTViewProvider(uiView: ClusterView(placemarks: placemarks)))
-    cluster.addClusterTapListener(with: self)
-}
+    private weak var controller: UIViewController?
+    }
 
-// MARK: - Private properties
-
-private weak var controller: UIViewController?
-}
-
-struct PlacemarkUserData {
-    let name: String
-//    let type: PlacemarkType
-}
+    struct PlacemarkUserData {
+        let name: String
+        let index: Int
+        
+    //    let type: PlacemarkType
+    }

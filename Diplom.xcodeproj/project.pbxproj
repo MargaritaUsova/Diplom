@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B196244D8F5F2BAE951867 /* Pods_Diplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796C62B0208D24EC7B49FB98 /* Pods_Diplom.framework */; };
 		6F2AFA842BC7E3C300D8F044 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2AFA832BC7E3C300D8F044 /* UserLocation.swift */; };
 		6F2AFA862BC7E6C700D8F044 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2AFA852BC7E6C700D8F044 /* NavigationViewController.swift */; };
 		6F40A9652B6AF62300F20A4F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40A9642B6AF62300F20A4F /* FavoritesViewController.swift */; };
 		6F40A9672B6AF66300F20A4F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40A9662B6AF66300F20A4F /* AccountViewController.swift */; };
 		6F4ADD0C2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4ADD0B2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift */; };
+		6F61E1572BDC51130093316D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E1562BDC51130093316D /* GoogleService-Info.plist */; };
 		6F69030A2B9DECBB00ED20B7 /* ClusterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6903092B9DECBB00ED20B7 /* ClusterListener.swift */; };
 		6F69030C2B9E47EF00ED20B7 /* ClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69030B2B9E47EF00ED20B7 /* ClusterView.swift */; };
+		6F9982632BD7E42A000E7265 /* GeometryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9982622BD7E42A000E7265 /* GeometryProvider.swift */; };
+		6FAD45A92BDFB68100C45673 /* MapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD45A82BDFB68100C45673 /* MapObjectTapListener.swift */; };
+		6FB411522BD717A200E6E63C /* JSONDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB411512BD717A200E6E63C /* JSONDataManager.swift */; };
 		6FD9AAC42BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9AAC22BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld */; };
-		6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */; };
+		6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDBManager.swift */; };
 		6FDA922B2BCD804B00F3CF32 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA922A2BCD804B00F3CF32 /* MenuCollectionViewCell.swift */; };
 		6FDD517C2BC2EB88004CD81C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD517B2BC2EB88004CD81C /* PlaceInfoViewController.swift */; };
 		6FDE97122B69A8D70036E3BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE97112B69A8D70036E3BB /* AppDelegate.swift */; };
@@ -32,21 +37,23 @@
 		6FF33C872B868B5A0057A5DE /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF33C862B868B5A0057A5DE /* SearchResultsViewController.swift */; };
 		6FF8BC1D2BB8D6B9008007A6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF8BC1C2BB8D6B9008007A6 /* SearchManager.swift */; };
 		6FF8BC1F2BB8DA76008007A6 /* SearchResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF8BC1E2BB8DA76008007A6 /* SearchResponseItem.swift */; };
-		7D8650CC37BDA138DC1031B8 /* Pods_Diplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C04F8057B8A1EDCA52638C9 /* Pods_Diplom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		115553A5A8261D82EC6F96EC /* Pods-Diplom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diplom.debug.xcconfig"; path = "Target Support Files/Pods-Diplom/Pods-Diplom.debug.xcconfig"; sourceTree = "<group>"; };
-		1C04F8057B8A1EDCA52638C9 /* Pods_Diplom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diplom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		15AEC7C94800438965C92C4E /* Pods-Diplom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diplom.debug.xcconfig"; path = "Target Support Files/Pods-Diplom/Pods-Diplom.debug.xcconfig"; sourceTree = "<group>"; };
 		6F2AFA832BC7E3C300D8F044 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		6F2AFA852BC7E6C700D8F044 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		6F40A9642B6AF62300F20A4F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		6F40A9662B6AF66300F20A4F /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		6F4ADD0B2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsFloatingViewController.swift; sourceTree = "<group>"; };
+		6F61E1562BDC51130093316D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F6903092B9DECBB00ED20B7 /* ClusterListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterListener.swift; sourceTree = "<group>"; };
 		6F69030B2B9E47EF00ED20B7 /* ClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterView.swift; sourceTree = "<group>"; };
+		6F9982622BD7E42A000E7265 /* GeometryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryProvider.swift; sourceTree = "<group>"; };
+		6FAD45A82BDFB68100C45673 /* MapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectTapListener.swift; sourceTree = "<group>"; };
+		6FB411512BD717A200E6E63C /* JSONDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataManager.swift; sourceTree = "<group>"; };
 		6FD9AAC32BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavouritePlacesDB.xcdatamodel; sourceTree = "<group>"; };
-		6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesDB.swift; sourceTree = "<group>"; };
+		6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesDBManager.swift; sourceTree = "<group>"; };
 		6FDA922A2BCD804B00F3CF32 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FDD517B2BC2EB88004CD81C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
 		6FDE970E2B69A8D70036E3BB /* Diplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +72,8 @@
 		6FF33C862B868B5A0057A5DE /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		6FF8BC1C2BB8D6B9008007A6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		6FF8BC1E2BB8DA76008007A6 /* SearchResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseItem.swift; sourceTree = "<group>"; };
-		E9E3C0421C62ED07750E8607 /* Pods-Diplom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diplom.release.xcconfig"; path = "Target Support Files/Pods-Diplom/Pods-Diplom.release.xcconfig"; sourceTree = "<group>"; };
+		796C62B0208D24EC7B49FB98 /* Pods_Diplom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diplom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E018FF4EEDBB5F3C8CCFF477 /* Pods-Diplom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diplom.release.xcconfig"; path = "Target Support Files/Pods-Diplom/Pods-Diplom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,17 +81,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D8650CC37BDA138DC1031B8 /* Pods_Diplom.framework in Frameworks */,
+				10B196244D8F5F2BAE951867 /* Pods_Diplom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		55598FD8AE6D795EBC594499 /* Frameworks */ = {
+		4548E020AEFA8A74BEC0CDE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1C04F8057B8A1EDCA52638C9 /* Pods_Diplom.framework */,
+				796C62B0208D24EC7B49FB98 /* Pods_Diplom.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,6 +99,8 @@
 		6FCFFCD72B7B4679004041CA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6FB411512BD717A200E6E63C /* JSONDataManager.swift */,
+				6FAD45A82BDFB68100C45673 /* MapObjectTapListener.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -117,7 +127,7 @@
 				6FF8BC1C2BB8D6B9008007A6 /* SearchManager.swift */,
 				6FE14C012B93D406008E843D /* Place.swift */,
 				6FD9AAC22BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld */,
-				6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDB.swift */,
+				6FD9AAC52BCFB39F00E4824F /* FavouritePlacesDBManager.swift */,
 				6FF8BC1E2BB8DA76008007A6 /* SearchResponseItem.swift */,
 				6F2AFA832BC7E3C300D8F044 /* UserLocation.swift */,
 				6FE14FEE2BCC2DD00090CAEE /* LocationManager.swift */,
@@ -131,7 +141,7 @@
 				6FDE97102B69A8D70036E3BB /* Diplom */,
 				6FDE970F2B69A8D70036E3BB /* Products */,
 				BE673937BDBE5E9C5F202A46 /* Pods */,
-				55598FD8AE6D795EBC594499 /* Frameworks */,
+				4548E020AEFA8A74BEC0CDE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +161,7 @@
 				6FDE971A2B69A8DD0036E3BB /* Assets.xcassets */,
 				6FDE971C2B69A8DD0036E3BB /* LaunchScreen.storyboard */,
 				6FDE971F2B69A8DD0036E3BB /* Info.plist */,
+				6F61E1562BDC51130093316D /* GoogleService-Info.plist */,
 				6FDE97112B69A8D70036E3BB /* AppDelegate.swift */,
 				6FDE97132B69A8D70036E3BB /* SceneDelegate.swift */,
 				6FCFFCD92B7B4794004041CA /* Model */,
@@ -158,6 +169,7 @@
 				6FCFFCD72B7B4679004041CA /* Controller */,
 				6F6903092B9DECBB00ED20B7 /* ClusterListener.swift */,
 				6F69030B2B9E47EF00ED20B7 /* ClusterView.swift */,
+				6F9982622BD7E42A000E7265 /* GeometryProvider.swift */,
 			);
 			path = Diplom;
 			sourceTree = "<group>";
@@ -174,8 +186,8 @@
 		BE673937BDBE5E9C5F202A46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				115553A5A8261D82EC6F96EC /* Pods-Diplom.debug.xcconfig */,
-				E9E3C0421C62ED07750E8607 /* Pods-Diplom.release.xcconfig */,
+				15AEC7C94800438965C92C4E /* Pods-Diplom.debug.xcconfig */,
+				E018FF4EEDBB5F3C8CCFF477 /* Pods-Diplom.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -187,11 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FDE97222B69A8DD0036E3BB /* Build configuration list for PBXNativeTarget "Diplom" */;
 			buildPhases = (
-				C3668B0A3232AF26B9111B24 /* [CP] Check Pods Manifest.lock */,
+				89632852FB9E418DACF7A53F /* [CP] Check Pods Manifest.lock */,
 				6FDE970A2B69A8D70036E3BB /* Sources */,
 				6FDE970B2B69A8D70036E3BB /* Frameworks */,
 				6FDE970C2B69A8D70036E3BB /* Resources */,
-				D9CFDB527448BFBE69065B05 /* [CP] Copy Pods Resources */,
+				7A10D719BFB6907AD266137F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F61E1572BDC51130093316D /* GoogleService-Info.plist in Resources */,
 				6FDE971E2B69A8DD0036E3BB /* LaunchScreen.storyboard in Resources */,
 				6FDE971B2B69A8DD0036E3BB /* Assets.xcassets in Resources */,
 				6FDE97192B69A8D70036E3BB /* Main.storyboard in Resources */,
@@ -250,7 +263,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C3668B0A3232AF26B9111B24 /* [CP] Check Pods Manifest.lock */ = {
+		7A10D719BFB6907AD266137F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89632852FB9E418DACF7A53F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,23 +302,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9CFDB527448BFBE69065B05 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diplom/Pods-Diplom-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -301,10 +314,12 @@
 				6FDE97162B69A8D70036E3BB /* SearchViewController.swift in Sources */,
 				6FF8BC1F2BB8DA76008007A6 /* SearchResponseItem.swift in Sources */,
 				6FF8BC1D2BB8D6B9008007A6 /* SearchManager.swift in Sources */,
+				6FAD45A92BDFB68100C45673 /* MapObjectTapListener.swift in Sources */,
 				6F2AFA842BC7E3C300D8F044 /* UserLocation.swift in Sources */,
 				6F69030C2B9E47EF00ED20B7 /* ClusterView.swift in Sources */,
 				6F40A9672B6AF66300F20A4F /* AccountViewController.swift in Sources */,
 				6F4ADD0C2BA780A700E8A7A7 /* SearchResultsFloatingViewController.swift in Sources */,
+				6FB411522BD717A200E6E63C /* JSONDataManager.swift in Sources */,
 				6FDF87582BBF425100E1D8C5 /* MapController.swift in Sources */,
 				6FDE97122B69A8D70036E3BB /* AppDelegate.swift in Sources */,
 				6F2AFA862BC7E6C700D8F044 /* NavigationViewController.swift in Sources */,
@@ -312,8 +327,9 @@
 				6FF33C872B868B5A0057A5DE /* SearchResultsViewController.swift in Sources */,
 				6FDD517C2BC2EB88004CD81C /* PlaceInfoViewController.swift in Sources */,
 				6FDE97142B69A8D70036E3BB /* SceneDelegate.swift in Sources */,
+				6F9982632BD7E42A000E7265 /* GeometryProvider.swift in Sources */,
 				6FE14FEF2BCC2DD00090CAEE /* LocationManager.swift in Sources */,
-				6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDB.swift in Sources */,
+				6FD9AAC62BCFB39F00E4824F /* FavouritePlacesDBManager.swift in Sources */,
 				6FD9AAC42BCF1EEF00E4824F /* FavouritePlacesDB.xcdatamodeld in Sources */,
 				6FDF87602BC162BD00E1D8C5 /* PlaceInfoCell.swift in Sources */,
 				6FDA922B2BCD804B00F3CF32 /* MenuCollectionViewCell.swift in Sources */,
@@ -464,7 +480,7 @@
 		};
 		6FDE97232B69A8DD0036E3BB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 115553A5A8261D82EC6F96EC /* Pods-Diplom.debug.xcconfig */;
+			baseConfigurationReference = 15AEC7C94800438965C92C4E /* Pods-Diplom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -496,7 +512,7 @@
 		};
 		6FDE97242B69A8DD0036E3BB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E3C0421C62ED07750E8607 /* Pods-Diplom.release.xcconfig */;
+			baseConfigurationReference = E018FF4EEDBB5F3C8CCFF477 /* Pods-Diplom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

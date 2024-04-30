@@ -30,6 +30,7 @@ class PlaceInfoCell: UITableViewCell{
             FavoritesViewController().favouritePlaces = FavoritesViewController().favouritePlaces.filter {
                 $0.placeId != selectedPlaceId
             }
+            
         }
         else {
             PlaceInfoCell.favouritePlaces = FavouritePlacesDBManager().addFavouritePlaces(place: selectedPlace, dateAdded: date)
@@ -39,13 +40,14 @@ class PlaceInfoCell: UITableViewCell{
         FavoritesViewController.tableView.reloadData()
     }
     
-    func configureCellButton(placeId: String?){
+    func configureCellButton(placeId: String?) -> Bool{
         guard let placeId = placeId else {
             toFavouritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            return
+            return false
         }
         let favouritePlacesChecker = checkIfPlaceIsFavourite(with: placeId)
         toFavouritesButton.setImage(favouritePlacesChecker ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
+        return favouritePlacesChecker
     }
     
     func checkIfPlaceIsFavourite(with id: String?) -> Bool{

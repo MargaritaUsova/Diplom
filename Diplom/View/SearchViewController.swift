@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
     private var buttonsImages: [UIImage] = []
     private var menuButtons: [UIButton] = []
     
@@ -38,7 +38,7 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         
         setupUI()
-
+        
     }
     
     private func setupUI(){
@@ -47,9 +47,12 @@ class SearchViewController: UIViewController {
         view.addSubview(searchBar)
         view.addSubview(collectionView)
         
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-       
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -65,7 +68,16 @@ class SearchViewController: UIViewController {
         ])
         
     }
-
+    
+    private func searchDataByButton(){
+        SearchManager.shared.searchByCuisineType {[weak self] places in
+            DispatchQueue.main.async {
+                guard let self else {return}
+                SearchResultsViewController.placesData = places
+            }
+        }
+        
+    }
 }
 
 
@@ -94,7 +106,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
               let storyboard = UIStoryboard(name: "Main", bundle: nil)
               if let searchResultsViewController = storyboard.instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController {
                   SearchViewController.buttonText = buttonText
-                  self.present(searchResultsViewController, animated: true, completion: nil)
+                  SearchManager.shared.searchByCuisineType {[weak self] places in
+                      DispatchQueue.main.async {
+                          guard let self else {return}
+                          SearchResultsViewController.placesData = places
+                          self.present(searchResultsViewController, animated: true, completion: nil)
+                      }
+                  }
+                  
               }
           }
       }
@@ -121,5 +140,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
+    }
+}
+
+
+extension SearchViewController: UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

@@ -9,22 +9,26 @@ import UIKit
 import YandexMapsMobile
 
 class SearchResultsViewController: UIViewController {
-    private let floatingVC = SearchResultsFloatingViewController()
-    
+    static var floatingVC: UIViewController!
+    static var placesData: [Place]!
     @IBOutlet weak var backToSearchViewControllrtButton: UIButton!
+    static var shared: UIViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        MapController.mapObjectTapListener = MapObjectTapListener(controller: self)
         let mapController = MapController()
-        mapController.mapConfigure(view: view)
-        view.addSubview(MapController.mapView)
-        view.bringSubviewToFront(backToSearchViewControllrtButton)
+        mapController.mapConfigure(self.view, searchResultsVC: self)
+        self.view.addSubview(mapController.mapView)
+        
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presentModal()
+        self.view.bringSubviewToFront(self.backToSearchViewControllrtButton)
+        self.presentModal()
     }
     
     
@@ -35,8 +39,10 @@ class SearchResultsViewController: UIViewController {
         
     }
     
+    
     func presentModal(){
-        let nav = UINavigationController(rootViewController: floatingVC)
+        SearchResultsViewController.floatingVC = SearchResultsFloatingViewController()
+        let nav = UINavigationController(rootViewController: SearchResultsViewController.floatingVC)
         nav.modalPresentationStyle = .pageSheet
         nav.isModalInPresentation = true
         
@@ -46,12 +52,10 @@ class SearchResultsViewController: UIViewController {
               sheet.prefersScrollingExpandsWhenScrolledToEdge = false
               sheet.largestUndimmedDetentIdentifier = .large
           }
-        present(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
 
         
     }
 
                 
 }
-    
-

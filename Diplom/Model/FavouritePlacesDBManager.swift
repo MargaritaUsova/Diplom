@@ -97,6 +97,9 @@ class FavouritePlacesDBManager: NSObject, NSFetchedResultsControllerDelegate {
         placeToAdd.setValue(place.name, forKey: "name")
         placeToAdd.setValue(dateAdded, forKey: "dateAdded")
         placeToAdd.setValue(place.id, forKey: "placeId")
+        placeToAdd.setValue(place.address, forKey: "address")
+        placeToAdd.setValue(place.category, forKey: "categories")
+        placeToAdd.setValue(place.averageBill, forKey: "averageBill")
         
         do {
             try context.save()

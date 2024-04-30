@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 
 class FavoritesViewController: UIViewController, NSFetchedResultsControllerDelegate {
-    
     var favouritePlaces: [FavouritePlacesDB] = []
     static let tableView: UITableView = {
         let tableView = UITableView()
@@ -28,7 +27,6 @@ class FavoritesViewController: UIViewController, NSFetchedResultsControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         favouritePlaces = FavouritePlacesDBManager().fetchFavouritePlaces()
-        print(favouritePlaces)
         FavoritesViewController.tableView.reloadData()
     }
     
@@ -57,26 +55,43 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PlaceInfoCell
-        cell.selectedPlaceId = favouritePlaces[indexPath.row].placeId
-        cell.placeName.text = favouritePlaces[indexPath.row].name
+        setupCellInformation(cell, indexPath: indexPath)
         cell.configureCellButton(placeId: favouritePlaces[indexPath.row].placeId)
         let placeInFavourites = cell.checkIfPlaceIsFavourite(with: favouritePlaces[indexPath.row].placeId)
-       
+        if !placeInFavourites {
+            deleteFromTableView(tableView, forRowAt: indexPath)
+        }
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let placeInfoVC = storyboard.instantiateViewController(withIdentifier: "PlaceInfoVC") as! PlaceInfoViewController
+        placeInfoVC.modalPresentationStyle = UIModalPresentationStyle.pageSheet
+        placeInfoVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        placeInfoVC.favouritePlacesInfo = favouritePlaces
+        placeInfoVC.selectedIndex = indexPath
+        self.present(placeInfoVC, animated: true)
+    }
+
+    private func setupCellInformation(_ cell: PlaceInfoCell, indexPath: IndexPath){
+        cell.selectedPlaceId = favouritePlaces[indexPath.row].placeId
+        cell.placeName.text = favouritePlaces[indexPath.row].name
+        cell.address.text = favouritePlaces[indexPath.row].address
+        cell.averageBill.text = favouritePlaces[indexPath.row].averageBill
+        if let categories = favouritePlaces[indexPath.row].categories as? [String]{
+            cell.categoriesList.text = categories.joined(separator: ",")
+        }
         
-        return .delete
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            tableView.beginUpdates()
-            favouritePlaces.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-        }
+    private func deleteFromTableView(_ tableView: UITableView, forRowAt indexPath: IndexPath){
+        tableView.beginUpdates()
+        favouritePlaces.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
+        tableView.reloadData()
     }
     
     

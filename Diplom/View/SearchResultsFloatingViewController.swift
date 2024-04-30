@@ -6,11 +6,10 @@
 //
 import UIKit
 
-
 class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     static let shared = SearchResultsFloatingViewController()
     var selectedIndex: IndexPath = [0,0]
-    var placesData: [Place] = []
+    var placesData = SearchResultsViewController.placesData!
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -32,7 +31,10 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         cell.placeName.text = placesData[indexPath.row].name
         cell.selectedPlace = placesData[indexPath.row]
         cell.selectedPlaceId = placesData[indexPath.row].id
-        cell.configureCellButton(placeId: placesData[indexPath.row].id)
+        let inFavorites = cell.configureCellButton(placeId: placesData[indexPath.row].id)
+        if inFavorites{
+//            Analytics.logEvent(AnalyticsEventSelectItem, parameters: [AnalyticsParameterItemID: placesData[indexPath.row].id])
+        }
         return cell
     }
     
@@ -41,8 +43,6 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedIndex = indexPath
-
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let placeInfoVC = mainStoryboard.instantiateViewController(identifier: "PlaceInfoVC") as! PlaceInfoViewController
         placeInfoVC.modalPresentationStyle = UIModalPresentationStyle.pageSheet
@@ -62,14 +62,16 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         tableView.dataSource = self
         setUpTableView()
         
-        SearchManager.shared.search {[weak self] places in
-            DispatchQueue.main.async {
-                guard let self else {return}
-                self.placesData = places
-                self.tableView.reloadData()
-            }
-        }
-      
+//        SearchManager.shared.searchByCuisineType {[weak self] places in
+//            DispatchQueue.main.async {
+//                guard let self else {return}
+//                self.placesData = places
+//                self.tableView.reloadData()
+//                MapController().makeCluster(self.placesData)
+//            }
+//        }
+        
+              
     }
     
     func setUpTableView(){
