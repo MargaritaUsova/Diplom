@@ -17,7 +17,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    public func configure(with imageName: String, name: String){
+    public func configureMenuCell(with imageName: String, name: String){
         self.menuButton.setImage(UIImage(named: imageName), for: .normal)
         self.menuButton.setTitle(name, for: .normal)
         self.menuButton.setTitleColor(.black, for: .normal)

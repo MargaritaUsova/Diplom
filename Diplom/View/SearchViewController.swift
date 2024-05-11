@@ -11,25 +11,46 @@ class SearchViewController: UIViewController {
     
     private var buttonsImages: [UIImage] = []
     private var menuButtons: [UIButton] = []
-    
-    private let buttonsImagesNames = ["Asia", "Bakery", "Breakfast", "Cake", "Chinese", "Coffee", "CurryRice", "Fastfood", "Kavkaz", "Pasta", "Pizza", "Poke", "Shawarma", "Shrimp", "Steak", "Sushi", "Taco", "Vegan"]
-    
-    private let buttonsNames = ["Азиатское", "Выпечка", "Завтрак", "Десерты", "Китайское", "Кофе", "Индийское", "Фастфуд", "Кавказское", "Паста", "Пицца", "Поке", "Шаурма", "Морепродукты", "Мясо", "Суши", "Мексиканское", "Веганское"]
+    lazy var searchManager = SearchManager()
     
     private var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
         collectionView.alwaysBounceVertical = true
         collectionView.showsVerticalScrollIndicator = false
-        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
+    private var searchSettingsButton: UIButton = {
+        let searchSettingsButton = UIButton(type: .custom)
+        let originalImage = UIImage(systemName: "slider.horizontal.3")
+        let blackImage = originalImage?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal)
+        let resizedImage = blackImage!.resized(to: CGSize(width: 35, height: 30))
+        searchSettingsButton.setImage(resizedImage, for: .normal)
+        searchSettingsButton.layer.borderWidth = 1
+        searchSettingsButton.layer.borderColor = UIColor.systemGray5.cgColor
+        searchSettingsButton.backgroundColor = .white
+        searchSettingsButton.translatesAutoresizingMaskIntoConstraints = false
+        searchSettingsButton.addTarget(self, action: #selector(searchSettingsButtonAction(_:)), for: .touchUpInside)
+        return searchSettingsButton
+    }()
+    
     let searchBar = UISearchBar()
-    static var buttonText: String!
+    static var queryText: String!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +62,22 @@ class SearchViewController: UIViewController {
         
     }
     
+    @objc private func searchSettingsButtonAction(_ sender: UIButton){
+        let searchSettingsVC = SearchFiltersViewController()
+        navigationController?.pushViewController(searchSettingsVC, animated: true)
+    }
+    
     private func setupUI(){
         view.backgroundColor = .systemGray6
         
         view.addSubview(searchBar)
         view.addSubview(collectionView)
+        view.addSubview(searchSettingsButton)
         
         searchBar.showsCancelButton = true
         searchBar.delegate = self
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
@@ -63,27 +89,23 @@ class SearchViewController: UIViewController {
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchBar.heightAnchor.constraint(equalToConstant:  60)
+            searchBar.heightAnchor.constraint(equalToConstant: 60),
+            searchBar.trailingAnchor.constraint(equalTo: searchSettingsButton.leadingAnchor),
+
+            searchSettingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchSettingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchSettingsButton.heightAnchor.constraint(equalToConstant: 60),
+            searchSettingsButton.widthAnchor.constraint(equalToConstant: 60),
         ])
-        
     }
     
-    private func searchDataByButton(){
-        SearchManager.shared.searchByCuisineType {[weak self] places in
-            DispatchQueue.main.async {
-                guard let self else {return}
-                SearchResultsViewController.placesData = places
-            }
-        }
-        
-    }
+
 }
 
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        buttonsImagesNames.count
+        ButtonsSetupInfo.buttonsImagesNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,10 +114,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             fatalError("Failed to deque MenuCollectionViewCell in SearchViewController")
         }
         
-        let buttonImageName = buttonsImagesNames[indexPath.row]
-        let buttonName = buttonsNames[indexPath.row]
+        let buttonImageName = ButtonsSetupInfo.buttonsImagesNames[indexPath.row]
+        let buttonName = ButtonsSetupInfo.buttonsNames[indexPath.row]
         
-        cell.configure(with: buttonImageName, name: buttonName)
+        cell.configureMenuCell(with: buttonImageName, name: buttonName)
         cell.menuButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
           return cell
       }
@@ -105,18 +127,16 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
           if let buttonText = sender.titleLabel?.text {
               let storyboard = UIStoryboard(name: "Main", bundle: nil)
               if let searchResultsViewController = storyboard.instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController {
-                  SearchViewController.buttonText = buttonText
-                  SearchManager.shared.searchByCuisineType {[weak self] places in
-                      DispatchQueue.main.async {
-                          guard let self else {return}
-                          SearchResultsViewController.placesData = places
-                          self.present(searchResultsViewController, animated: true, completion: nil)
-                      }
-                  }
+                  SearchViewController.queryText = buttonText
                   
+            
+                  
+                  self.present(searchResultsViewController, animated: true, completion: nil)
               }
+              
           }
       }
+   
     
 }
 
@@ -139,13 +159,44 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
+        return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
     }
 }
 
 
 extension SearchViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
         searchBar.endEditing(true)
     }
+    
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let searchResultsViewController = storyboard.instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController {
+//            SearchViewController.queryText = searchBar.text!
+//            SearchManager.shared.searchByQuery{[weak self] places in
+//                DispatchQueue.main.async {
+//                    guard let self else {return}
+//                    SearchResultsViewController.placesData = places
+//                    if let presentedViewController = self.presentedViewController, presentedViewController is SearchResultsViewController {
+//                        return
+//                    } else {
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                        if let searchResultsViewController = storyboard.instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController {
+//                            self.present(searchResultsViewController, animated: true, completion: nil)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
+
+extension UIImage {
+    func resized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+

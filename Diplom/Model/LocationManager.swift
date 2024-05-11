@@ -9,13 +9,12 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate{
-    static let shared = LocationManager()
     
-    public let locationManager = CLLocationManager()
-    public var userLatitude: Double = 55.7558
-    public var userLongtitude: Double = 37.6173
+    private let locationManager = CLLocationManager()
+    static var userLatitude: Double = 55.7558
+    static var userLongtitude: Double = 37.6173
     
-    override private init() {
+    override init() {
         super.init()
         locationManager.delegate = self
     }
@@ -30,16 +29,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        if let location = locations.first {
-            userLatitude = location.coordinate.latitude
-            userLongtitude = location.coordinate.longitude
+        DispatchQueue.global().async {
+            
+            if let location = locations.first {
+                LocationManager.userLatitude = location.coordinate.latitude
+                LocationManager.userLongtitude = location.coordinate.longitude
+            }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-        print("Got error: ", error)
-       
+        print("Got error with location: ", error)
     }
     
 }
+
+

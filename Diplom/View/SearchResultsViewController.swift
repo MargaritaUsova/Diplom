@@ -10,18 +10,20 @@ import YandexMapsMobile
 
 class SearchResultsViewController: UIViewController {
     static var floatingVC: UIViewController!
-    static var placesData: [Place]!
+    static var placesData = [Place]()
     @IBOutlet weak var backToSearchViewControllrtButton: UIButton!
     static var shared: UIViewController!
-    
+    private let searchManager = SearchManager()
+    private let mapController = MapController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mapController.searchResultsVC = self
         MapController.mapObjectTapListener = MapObjectTapListener(controller: self)
-        let mapController = MapController()
         mapController.mapConfigure(self.view, searchResultsVC: self)
+        
         self.view.addSubview(mapController.mapView)
+        mapController.setupStateUpdates()
         
     }
 
@@ -29,6 +31,7 @@ class SearchResultsViewController: UIViewController {
         super.viewDidAppear(animated)
         self.view.bringSubviewToFront(self.backToSearchViewControllrtButton)
         self.presentModal()
+        
     }
     
     
@@ -52,6 +55,7 @@ class SearchResultsViewController: UIViewController {
               sheet.prefersScrollingExpandsWhenScrolledToEdge = false
               sheet.largestUndimmedDetentIdentifier = .large
           }
+//       
         self.present(nav, animated: true, completion: nil)
 
         

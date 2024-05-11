@@ -9,9 +9,10 @@ import UIKit
 class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     static let shared = SearchResultsFloatingViewController()
     var selectedIndex: IndexPath = [0,0]
-    var placesData = SearchResultsViewController.placesData!
+//    var placesData = SearchResultsViewController.placesData
+    private let searchManager = SearchManager()
     
-    let tableView: UITableView = {
+    static let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
@@ -20,26 +21,22 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
     }()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        placesData.count
+        SearchResultsViewController.placesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PlaceInfoCell
-        cell.address.text = placesData[indexPath.row].address
-        cell.averageBill.text = placesData[indexPath.row].averageBill
-        cell.categoriesList.text = placesData[indexPath.row].category.joined(separator: ",")
-        cell.placeName.text = placesData[indexPath.row].name
-        cell.selectedPlace = placesData[indexPath.row]
-        cell.selectedPlaceId = placesData[indexPath.row].id
-        let inFavorites = cell.configureCellButton(placeId: placesData[indexPath.row].id)
-        if inFavorites{
-//            Analytics.logEvent(AnalyticsEventSelectItem, parameters: [AnalyticsParameterItemID: placesData[indexPath.row].id])
-        }
+        cell.address.text = SearchResultsViewController.placesData[indexPath.row].address
+        cell.categoriesList.text = SearchResultsViewController.placesData[indexPath.row].category.joined(separator: ",")
+        cell.placeName.text = SearchResultsViewController.placesData[indexPath.row].name
+        cell.selectedPlace = SearchResultsViewController.placesData[indexPath.row]
+        cell.selectedPlaceId = SearchResultsViewController.placesData[indexPath.row].id
+        cell.averageBill.text = SearchResultsViewController.placesData[indexPath.row].averageBill
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 100
+        return 130
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,7 +44,8 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         let placeInfoVC = mainStoryboard.instantiateViewController(identifier: "PlaceInfoVC") as! PlaceInfoViewController
         placeInfoVC.modalPresentationStyle = UIModalPresentationStyle.pageSheet
         placeInfoVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        placeInfoVC.placesInfo = placesData
+        placeInfoVC.placesInfo = SearchResultsViewController.placesData
+        placeInfoVC.selectedIndex = indexPath
         self.present(placeInfoVC, animated: true)
     }
     
@@ -58,30 +56,27 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         self.title = "Список мест"
         view.layer.cornerRadius = 30
        
-        tableView.delegate = self
-        tableView.dataSource = self
+        SearchResultsFloatingViewController.tableView.delegate = self
+        SearchResultsFloatingViewController.tableView.dataSource = self
+        
         setUpTableView()
-        
-//        SearchManager.shared.searchByCuisineType {[weak self] places in
-//            DispatchQueue.main.async {
-//                guard let self else {return}
-//                self.placesData = places
-//                self.tableView.reloadData()
-//                MapController().makeCluster(self.placesData)
-//            }
-//        }
-        
               
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        SearchResultsFloatingViewController.tableView.reloadData()
+    }
+    
+    
     func setUpTableView(){
-         view.addSubview(tableView)
-         tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(SearchResultsFloatingViewController.tableView)
+        SearchResultsFloatingViewController.tableView.translatesAutoresizingMaskIntoConstraints = false
          NSLayoutConstraint.activate([
-             tableView.topAnchor.constraint(equalTo: view.topAnchor),
-             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            SearchResultsFloatingViewController.tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            SearchResultsFloatingViewController.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            SearchResultsFloatingViewController.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            SearchResultsFloatingViewController.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
          ])
     }
     

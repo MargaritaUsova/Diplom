@@ -4,7 +4,7 @@
 target 'Diplom' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-pod 'YandexMapsMobile', '4.3.1-full’
+pod 'YandexMapsMobile', '4.6.1-full’
   # Pods for Diplom
 
 end

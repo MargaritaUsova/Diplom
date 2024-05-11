@@ -14,6 +14,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let rootViewController = SearchViewController()
+    var navigationController: UINavigationController!
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FavouritePlacesDB")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -28,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         YMKMapKit.setApiKey("***REMOVED***")
         YMKMapKit.sharedInstance()
+        
 
         return true
     }
