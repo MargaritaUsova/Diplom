@@ -9,7 +9,6 @@ import UIKit
 class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     static let shared = SearchResultsFloatingViewController()
     var selectedIndex: IndexPath = [0,0]
-//    var placesData = SearchResultsViewController.placesData
     private let searchManager = SearchManager()
     
     static let tableView: UITableView = {

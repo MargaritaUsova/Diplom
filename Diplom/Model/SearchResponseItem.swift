@@ -8,7 +8,7 @@
 import Foundation
 import YandexMapsMobile
 
-struct SearchResponseItem {
+struct SearchResponseItem: Hashable {
     let point: YMKPoint
     let geoObject: YMKGeoObject?
 }

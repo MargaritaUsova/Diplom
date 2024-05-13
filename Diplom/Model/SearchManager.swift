@@ -10,6 +10,7 @@ import Combine
 import YandexMapsMobile
 
 class SearchManager{
+
     
     static let shared = SearchManager()
     private var searchSession: YMKSearchSession?
@@ -19,7 +20,7 @@ class SearchManager{
         let options = YMKSearchOptions()
         options.searchTypes = .biz
         options.snippets = YMKSearchSnippet.photos
-//        options.resultPageSize = 200
+        options.resultPageSize = 1000
         return options
     }()
     
@@ -143,7 +144,8 @@ class SearchManager{
             itemsBoundingBox: boundingBox
         )
         
-        placesResult = makePlaceInfo(items)
+//        placesResult = makePlaceInfo(items)
+        makePlaceInfo(items)
     }
     
     func makePlaceInfo(_ items: [SearchResponseItem]) -> [Place]{

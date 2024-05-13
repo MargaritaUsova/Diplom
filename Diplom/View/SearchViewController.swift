@@ -54,7 +54,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        let parsersData = GetParserData()
         collectionView.dataSource = self
         collectionView.delegate = self
         
