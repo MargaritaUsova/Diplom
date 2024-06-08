@@ -57,7 +57,8 @@ class SearchViewController: UIViewController {
 //        let parsersData = GetParserData()
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+//        TrainModel().createModel()
+        RecommendationEngine().makePrediction()
         setupUI()
         
     }

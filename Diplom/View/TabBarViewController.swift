@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController {
     private func setupTabs(){
         let search = createNavC(with: "Поиск", image: UIImage(systemName: "magnifyingglass")!, vc: SearchViewController())
         let favorites = createNavC(with: "Избранное", image: UIImage(systemName: "star")!, vc: FavoritesViewController())
-        let account = createNavC(with: "Пользователь", image: UIImage(systemName: "person")!, vc: AccountViewController())
+        let account = createNavC(with: "Рекомендации", image: UIImage(systemName: "person")!, vc: RecommendationsViewController())
         
         self.setViewControllers([search, favorites, account], animated: true)
     }

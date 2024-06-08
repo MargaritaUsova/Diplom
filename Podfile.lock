@@ -1,16 +1,20 @@
 PODS:
+  - onnxruntime-mobile-c (1.18.0)
   - YandexMapsMobile (4.6.1-full)
 
 DEPENDENCIES:
+  - onnxruntime-mobile-c
   - YandexMapsMobile (= 4.6.1-full)
 
 SPEC REPOS:
   trunk:
+    - onnxruntime-mobile-c
     - YandexMapsMobile
 
 SPEC CHECKSUMS:
+  onnxruntime-mobile-c: 612e643a0717ffe35ef1b3e9c3d63a084a5c122b
   YandexMapsMobile: b5f4dfeb8d1fe324dc18afb33d772b04d04d34f6
 
-PODFILE CHECKSUM: b59acc0c51a8be7c9be02b5ff10f813cb8128732
+PODFILE CHECKSUM: 038c499b7a85d0063f6d8dd6aac6c3956de78f32
 
 COCOAPODS: 1.14.3

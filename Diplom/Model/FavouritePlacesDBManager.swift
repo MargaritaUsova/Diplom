@@ -98,10 +98,29 @@ class FavouritePlacesDBManager: NSObject, NSFetchedResultsControllerDelegate {
         placeToAdd.setValue(dateAdded, forKey: "dateAdded")
         placeToAdd.setValue(place.id, forKey: "placeId")
         placeToAdd.setValue(place.address, forKey: "address")
-        placeToAdd.setValue(place.category, forKey: "categories")
-        placeToAdd.setValue(place.features!["средний счёт"], forKey: "averageBill")
-        placeToAdd.setValue(place.phoneNumbers, forKey: "phoneNumbers")
-        placeToAdd.setValue(place.photos, forKey: "photos")
+        placeToAdd.setValue(place.category, forKey: "categories") 
+        placeToAdd.setValue(place.averageBill, forKey: "averageBill")
+        
+//        if let averageBill = place.features?["средний счёт"] as? [String]{
+//            print("averagebill: ", averageBill)
+//            placeToAdd.setValue(averageBill.joined(), forKey: "averageBill")
+//        }
+        placeToAdd.setValue(place.uri, forKey: "uri")
+        if let disabledAccess = place.features?["доступность входа на инвалидной коляске"]{
+            var acces = false
+            if disabledAccess as? String == ["доступно"].first {
+                acces.toggle()
+            }
+            placeToAdd.setValue(acces, forKey: "disabledAccess")
+        }
+        if let childrenRoom = place.features?["детская комната"]{
+            placeToAdd.setValue(childrenRoom, forKey: "childrenRoom")
+        }
+        if let priceRange = place.features?["цены"] as? String{
+            placeToAdd.setValue(priceRange, forKey: "priceRange")
+
+        }
+        
         
         
         do {

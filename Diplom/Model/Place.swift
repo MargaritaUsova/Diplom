@@ -21,6 +21,7 @@ struct Place {
     var averageBill: String?
     var workingHours: String?
     var photos: [String?]?
+    var uri: String?
 }
 
 

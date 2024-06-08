@@ -7,8 +7,8 @@
 
 import Foundation
 enum ButtonsSetupInfo{
-    static let buttonsImagesNames = ["Asia", "Bakery", "Breakfast", "Cake", "Chinese", "Coffee", "CurryRice", "Fastfood", "Kavkaz", "Pasta", "Pizza", "Poke", "Shawarma", "Shrimp", "Steak", "Sushi", "Taco", "Vegan"]
-    static let buttonsNames = ["Азиатское", "Выпечка", "Завтрак", "Десерты", "Китайское", "Кофе", "Индийское", "Фастфуд", "Кавказское", "Паста", "Пицца", "Поке", "Шаурма", "Морепродукты", "Мясо", "Суши", "Мексиканское", "Веганское"]
+    static let buttonsImagesNames = ["Asia", "Bakery", "Breakfast", "Cake", "Chinese", "Coffee", "CurryRice", "Fastfood", "Vegan", "Pasta", "Pizza", "Poke", "Shawarma", "Shrimp","Sushi", "Steak", "Taco", "Kavkaz"]
+    static let buttonsNames = ["Азиатское", "Выпечка", "Завтрак", "Десерты", "Китайское", "Кофе", "Индийское", "Фастфуд", "Веганское", "Паста", "Пицца", "Поке", "Шаурма", "Морепродукты", "Суши", "Мясное", "Мексиканское", "Кавказское"]
 }
 
 enum AcceptablePlaceCategories{

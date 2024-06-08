@@ -20,7 +20,7 @@ class SearchManager{
         let options = YMKSearchOptions()
         options.searchTypes = .biz
         options.snippets = YMKSearchSnippet.photos
-        options.resultPageSize = 1000
+        options.resultPageSize = 20
         return options
     }()
     
@@ -110,6 +110,40 @@ class SearchManager{
         }
     }
     
+    func searchWithPolygon(text: String?, region: YMKPolygon){
+        if let text = text{
+            searchForPrediction(text: text, visibleRegion: region)
+            searchText = text
+        }
+        else{
+            return
+        }
+    }
+    
+    func searchForPrediction(text: String, visibleRegion: YMKPolygon){
+        searchWithFilters = false
+        searchSession?.cancel()
+            searchSession = searchManager.submit(
+                withText: "where to eat",
+                geometry:  YMKGeometry(polygon: visibleRegion),
+                searchOptions: searchOptions,
+                responseHandler: handleSearchSessionResponse
+            )
+        
+    }
+    
+    func searchByUri(uri: String) {
+        searchWithFilters = false
+        searchSession?.cancel()
+        searchSession = searchManager.searchByURI(
+            withUri: uri,
+            searchOptions: YMKSearchOptions(),
+            responseHandler: handleSearchSessionResponse
+        )
+//        searchState = .loading
+       
+    }
+    
     func searchByQuery(with text: String, visibleRegion: YMKVisibleRegion){
         searchWithFilters = false
         searchSession?.cancel()
@@ -143,8 +177,6 @@ class SearchManager{
             zoomToItems: false,
             itemsBoundingBox: boundingBox
         )
-        
-//        placesResult = makePlaceInfo(items)
         makePlaceInfo(items)
     }
     
@@ -153,7 +185,7 @@ class SearchManager{
         
         for item in items {
             let metadata = item.geoObject?.metadataContainer.getItemOf(YMKSearchBusinessObjectMetadata.self) as! YMKSearchBusinessObjectMetadata
-            
+            let uris = item.geoObject?.metadataContainer.getItemOf(YMKUriObjectMetadata.self) as! YMKUriObjectMetadata
             let metadataPhoto = item.geoObject?.metadataContainer.getItemOf(YMKSearchBusinessPhotoObjectMetadata.self) as? YMKSearchBusinessPhotoObjectMetadata
             var photos: [String?] = []
             if let photosMetadata = metadataPhoto?.photos {
@@ -187,8 +219,8 @@ class SearchManager{
                                   links: metadata.links.map {$0.link.href},
                                   averageBill: averageBill,
                                   workingHours: metadata.workingHours?.text,
-                                  photos: photos)
-
+                                  photos: photos,
+                                  uri: uris.uris.first?.value)
                 
                 if searchWithFilters && applyFeatures(features) {
                     places.append(place)
@@ -198,7 +230,9 @@ class SearchManager{
                 
             }
         }
+        
         SearchResultsViewController.placesData = places
+        
         return places
     }
     
@@ -225,15 +259,19 @@ class SearchManager{
             else if let booleanValue = data.value.booleanValue?.value{
                 value = booleanValue
 //                print(data.name, data.value.booleanValue?.value)
+                
             }
             else if let enumValue = data.value.enumValue.map({$0.map{$0.name}}){
                 value = enumValue
 //                print(data.name)
             }
-            if let value = value as? [String],
-               let name = data.name{
-                result[name] = value
-
+//            if let value = value as? [String],
+               if let name = data.name{
+//                   if let value = value as? [String]{
+//                       print(name)
+                       result[name] = value
+                       
+//                   print(name)
 //                if name == "особенности заведения" {
 //                    value.forEach{ item in
 //                        if let cuisineType = item as? String {

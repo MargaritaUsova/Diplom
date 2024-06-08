@@ -21,6 +21,7 @@ class FavoritesViewController: UIViewController, NSFetchedResultsControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Избранное"
        setupUI()
     }
     
