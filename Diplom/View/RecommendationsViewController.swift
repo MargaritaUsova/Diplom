@@ -66,7 +66,7 @@ extension RecommendationsViewController: UITableViewDelegate, UITableViewDataSou
         cell.address.text = RecommendationEngine.recommendations[indexPath.row].address
         cell.averageBill.text = RecommendationEngine.recommendations[indexPath.row].averageBill
         if let categories = RecommendationEngine.recommendations[indexPath.row].categories as? [String]{
-            cell.categoriesList.text = categories.joined(separator: ",")
+            cell.categoriesList.text = categories.joined(separator: ", ")
         }
         
     }

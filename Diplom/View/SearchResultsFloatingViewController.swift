@@ -26,7 +26,7 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PlaceInfoCell
         cell.address.text = SearchResultsViewController.placesData[indexPath.row].address
-        cell.categoriesList.text = SearchResultsViewController.placesData[indexPath.row].category.joined(separator: ",")
+        cell.categoriesList.text = SearchResultsViewController.placesData[indexPath.row].category.joined(separator: ", ")
         cell.placeName.text = SearchResultsViewController.placesData[indexPath.row].name
         cell.selectedPlace = SearchResultsViewController.placesData[indexPath.row]
         cell.selectedPlaceId = SearchResultsViewController.placesData[indexPath.row].id
@@ -52,7 +52,7 @@ class SearchResultsFloatingViewController: UIViewController, UITableViewDelegate
         super.viewDidLoad()
         
         view.backgroundColor = .systemGray6
-        self.title = "Список мест"
+        self.title = "Список заведений"
         view.layer.cornerRadius = 30
        
         SearchResultsFloatingViewController.tableView.delegate = self

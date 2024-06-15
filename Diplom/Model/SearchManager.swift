@@ -16,7 +16,7 @@ class SearchManager{
     private var searchSession: YMKSearchSession?
     private var searchManager = YMKSearchFactory.instance().createSearchManager(with: .combined)
     
-    private var searchOptions = {
+    private let searchOptions = {
         let options = YMKSearchOptions()
         options.searchTypes = .biz
         options.snippets = YMKSearchSnippet.photos
@@ -59,7 +59,6 @@ class SearchManager{
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .assign(to: \.visibleRegionAfterDebounce, on: self)
             .store(in: &subscriptions)
-        print("Visible Region: ", searchState)
     }
     
     private func setupSearchSubscription() {

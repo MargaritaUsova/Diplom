@@ -23,7 +23,7 @@ class RecommendationEngine{
         let options = YMKSearchOptions()
         options.searchTypes = .biz
         options.snippets = YMKSearchSnippet.photos
-        options.resultPageSize = 100
+        options.resultPageSize = 1000
         return options
     }()
     
@@ -168,9 +168,9 @@ class RecommendationEngine{
                                                           SushiBar: 0.7 * venue.SushiBar + 0.3 * (categoryNames.contains("Суши-бар") ? 1 : 0),
                                                           Restaurant: 0.7 * venue.Restaurant + 0.3 * (categoryNames.contains("Ресторан") ? 1 : 0),
                                                           TakeawayMeals: 0.7 * venue.TakeawayMeals + 0.3 * (categoryNames.contains("Еда с собой") ? 1 : 0),
-                                                          Pub: 0.7 * venue.Pub + 0.3 * (categoryNames.contains("Спортбар") ? 1 : 0),
+                                                          Pub: 0/*0.7 * venue.Pub + 0.3 * (categoryNames.contains("Спортбар") ? 1 : 0)*/,
                                                           FastFood: 0.7 * venue.FastFood + 0.3 * (categoryNames.contains("Быстрое питание") ? 1 : 0),
-                                                          Canteen: 0.7 * venue.Canteen + 0.3 * (categoryNames.contains("Столовая") ? 1 : 0))
+                                                          Canteen: 0/*0.7 * venue.Canteen + 0.3 * (categoryNames.contains("Столовая") ? 1 : 0)*/)
                     
                     if let prediction = try? model?.prediction(input: input){
 //                        print("input: ", input.isChildFriendly, input.hasAlcohol, input.wheelChairAccess, input.averageBill, input.Bakery, input.CoffeeShop, input.Pizzeria, input.Cafe, input.TakeawayCoffee, input.TakeawayFood, input.Food, input.Confectionery, input.IceCream, input.Bar, input.SushiBar, input.Restaurant, input.TakeawayMeals, input.Pub, input.FastFood, input.Canteen, prediction.likedByUser)
@@ -180,13 +180,16 @@ class RecommendationEngine{
                                                               address: metadata.address.formattedAddress,
                                                               averageBill: averageBill,
                                                               categories: categoryNames)
+                            print(place.name)
                             if !RecommendationEngine.recommendations.contains(where: {$0.placeId == place.placeId})
                             {
-                                RecommendationEngine.recommendations.append(RecommendationsStruct(placeId: metadata.oid,
-                                                                                                  name: (item.geoObject?.name)!,
-                                                                                                  address: metadata.address.formattedAddress,
-                                                                                                  averageBill: averageBill,
-                                                                                                  categories: categoryNames))
+                                if (place.name != "Detilapshi"){
+                                    RecommendationEngine.recommendations.append(RecommendationsStruct(placeId: metadata.oid,
+                                                                                                      name: (item.geoObject?.name)!,
+                                                                                                      address: metadata.address.formattedAddress,
+                                                                                                      averageBill: averageBill,
+                                                                                                      categories: categoryNames))
+                                }
                             }
 //                            print(item.geoObject?.name)
                         }

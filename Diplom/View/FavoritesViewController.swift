@@ -82,7 +82,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.address.text = favouritePlaces[indexPath.row].address
         cell.averageBill.text = favouritePlaces[indexPath.row].averageBill
         if let categories = favouritePlaces[indexPath.row].categories as? [String]{
-            cell.categoriesList.text = categories.joined(separator: ",")
+            cell.categoriesList.text = categories.joined(separator: ", ")
         }
         
     }
